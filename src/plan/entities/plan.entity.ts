@@ -29,4 +29,14 @@ export class PlanEntity {
 
   @DeleteDateColumn({ name: 'deleted_at' })
   deletedAt: string;
+
+  constructor(plan?: Partial<PlanEntity>) {
+    this.id = plan.id;
+    this.name = plan.name;
+    this.description = plan.description;
+    this.price = plan.price;
+    this.createdAt = plan.createdAt;
+    this.updatedAt = plan.updatedAt;
+    this.deletedAt = plan.deletedAt;
+  }
 }

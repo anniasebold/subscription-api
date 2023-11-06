@@ -18,14 +18,14 @@ import { UpdatePlanDto } from './dto/update-plan.dto';
 export class PlanController {
   constructor(private readonly planService: PlanService) {}
 
-  @Post()
-  create(@Body() createPlanDto: CreatePlanDto) {
-    return this.planService.create(createPlanDto);
-  }
-
   @Get()
   findAll() {
     return this.planService.findAll();
+  }
+
+  @Post()
+  create(@Body() createPlanDto: CreatePlanDto) {
+    return this.planService.create(createPlanDto);
   }
 
   @Get(':id')
@@ -43,7 +43,7 @@ export class PlanController {
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id', new ParseUUIDPipe()) id: string) {
+  softDelete(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.planService.remove(id);
   }
 }

@@ -12,12 +12,6 @@ export class PlanService {
     private readonly planRepository: Repository<PlanEntity>,
   ) {}
 
-  async create(createPlanDto: CreatePlanDto) {
-    return await this.planRepository.save(
-      this.planRepository.create(createPlanDto),
-    );
-  }
-
   async findAll(): Promise<PlanEntity[]> {
     return await this.planRepository.find();
   }
@@ -28,6 +22,12 @@ export class PlanService {
     } catch (error) {
       throw new NotFoundException(error.message);
     }
+  }
+
+  async create(createPlanDto: CreatePlanDto) {
+    return await this.planRepository.save(
+      this.planRepository.create(createPlanDto),
+    );
   }
 
   async update(id: string, updatePlanDto: UpdatePlanDto) {
