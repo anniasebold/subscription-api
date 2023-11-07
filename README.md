@@ -6,6 +6,10 @@
 
 ## Descrição
 
+API desenvolvida por:
+- Annia Luiza Sebold
+- Miguel dos Santos Flores
+
 Subscription API para controle de Assinaturas do Facoffee.
 
 
