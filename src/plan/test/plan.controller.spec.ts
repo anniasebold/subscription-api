@@ -44,12 +44,6 @@ describe('PlanController', () => {
   let planService: PlanService;
 
   beforeEach(async () => {
-    // Teste unitário tem como objetivo testar uma unica parte do nosso código e garantir a qualidade dele
-    // Ele tem como premissa o teste unitário que o banco de dados está funcionando, o repositório esteja bem implementado
-    // Repositório herdado do typeorm
-
-    // Antes de teste rodar ele vai criar um módulo de teste pasando as informações relevantes para o teste funcionar
-    // Atribui esse module na variável planController
     const module: TestingModule = await Test.createTestingModule({
       controllers: [PlanController],
       providers: [
@@ -84,7 +78,6 @@ describe('PlanController', () => {
     });
 
     it('should throw an exception', () => {
-      // Vai rejeitar a promise somente uma vez
       jest.spyOn(planService, 'findAll').mockRejectedValueOnce(new Error());
 
       expect(planController.findAll()).rejects.toThrow();

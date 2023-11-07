@@ -20,7 +20,7 @@ export class PlanService {
     try {
       return await this.planRepository.findOneOrFail({ where: { id } });
     } catch (error) {
-      throw new NotFoundException(error.message);
+      throw new NotFoundException('Plano não encontrado.');
     }
   }
 

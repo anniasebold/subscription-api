@@ -31,12 +31,12 @@ export class PlanEntity {
   deletedAt: string;
 
   constructor(plan?: Partial<PlanEntity>) {
-    this.id = plan.id;
-    this.name = plan.name;
-    this.description = plan.description;
-    this.price = plan.price;
-    this.createdAt = plan.createdAt;
-    this.updatedAt = plan.updatedAt;
-    this.deletedAt = plan.deletedAt;
+    this.id = plan?.id;
+    this.name = plan?.name;
+    this.description = plan?.description;
+    this.price = plan?.price;
+    this.createdAt = plan?.createdAt;
+    this.updatedAt = plan?.updatedAt;
+    this.deletedAt = plan?.deletedAt;
   }
 }
