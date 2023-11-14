@@ -67,11 +67,9 @@ export class SubscriptionService {
   }
 
   hasSubscriptionExpired(subscription: SubscriptionEntity): boolean {
-    const createdAtDate = new Date(subscription.createdAt);
     const expirationDate = new Date(subscription.expirationDate);
     const currentDate = new Date();
 
-    createdAtDate.setHours(0, 0, 0, 0);
     expirationDate.setHours(0, 0, 0, 0);
     currentDate.setHours(0, 0, 0, 0);
 
