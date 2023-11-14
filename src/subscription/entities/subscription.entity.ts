@@ -17,8 +17,11 @@ export class SubscriptionEntity {
   @Column({ name: 'user_id' })
   userId: string;
 
-  @Column({ name: 'is_active', type: 'boolean' })
+  @Column({ name: 'is_active', type: 'boolean', default: true })
   isActive: boolean;
+
+  @Column({ name: 'expiration_date' })
+  expirationDate: Date;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: string;

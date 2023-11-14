@@ -3,6 +3,7 @@ import { PlanModule } from './plan/plan.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SubscriptionModule } from './subscription/subscription.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { SubscriptionModule } from './subscription/subscription.module';
     }),
     PlanModule,
     SubscriptionModule,
+    ScheduleModule.forRoot(),
   ],
   controllers: [],
   providers: [],

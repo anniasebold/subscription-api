@@ -1,18 +1,9 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  HttpStatus,
-  HttpCode,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param } from '@nestjs/common';
 import { SubscriptionService } from './subscription.service';
 import { CreateSubscriptionDto } from './dto/create-subscription.dto';
 import { UpdateSubscriptionDto } from './dto/update-subscription.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { Cron, CronExpression } from '@nestjs/schedule';
 
 @Controller('subscription')
 @ApiTags('subscription')
@@ -42,9 +33,9 @@ export class SubscriptionController {
     return this.subscriptionService.update(id, updateSubscriptionDto);
   }
 
-  @Delete(':id')
-  @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') id: string) {
-    return this.subscriptionService.remove(id);
+  @Cron(CronExpression.EVERY_DAY_AT_MIDNIGHT)
+  @Post('/expiration')
+  expirationSubscriptions() {
+    return this.subscriptionService.checkSubscriptionExpiration();
   }
 }

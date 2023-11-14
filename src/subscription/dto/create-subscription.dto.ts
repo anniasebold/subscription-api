@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsBoolean, IsNotEmpty, IsUUID } from 'class-validator';
+import { IsDateString, IsNotEmpty, IsUUID } from 'class-validator';
 
 export class CreateSubscriptionDto {
   @ApiProperty()
@@ -14,6 +14,6 @@ export class CreateSubscriptionDto {
 
   @ApiProperty()
   @IsNotEmpty()
-  @IsBoolean()
-  isActive: boolean;
+  @IsDateString()
+  expirationDate: Date;
 }
