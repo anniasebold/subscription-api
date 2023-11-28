@@ -6,7 +6,10 @@ import * as jwt from 'jsonwebtoken';
 @Injectable()
 export class AuthMiddleware implements NestMiddleware {
   async use(req: Request, res: Response, next: NextFunction) {
-    if (!req.headers.authorization) {
+    if (
+      !req.headers.authorization ||
+      !req.headers.authorization.startsWith('Bearer')
+    ) {
       return res.status(401).json({ message: 'Token não fornecido.' });
     }
 
