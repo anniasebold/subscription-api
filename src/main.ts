@@ -10,6 +10,17 @@ async function bootstrap() {
     .setTitle('Documentação Swagger - Subscription API')
     .setDescription('API para controle de Assinaturas do Facoffee.')
     .setVersion('1.0.0')
+    .addBearerAuth(
+      {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'JWT',
+        description: 'Insira seu token.',
+        in: 'header',
+      },
+      'Autenticação JWT',
+    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);
